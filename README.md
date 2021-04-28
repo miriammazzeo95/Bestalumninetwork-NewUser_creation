@@ -1,7 +1,7 @@
 # NewUser_creation
 The scripts registers new members' data in the Admin Directory weather a new user fill the 'Become a member of BAN' form.
 
-This script is a BETA version used for testing and correcting bugs of the code in production. It is embedded within a spreadsheet and connected triggered by filling a form. 
+This script is a BETA version used for testing and correcting bugs in the code in production. It is embedded within a spreadsheet and triggered by filling a form. 
 For easier testing an UNITTEST function has been implemented and a simplified form as well.
 
 #SPREADSHEET: https://docs.google.com/spreadsheets/d/1yFZGMtlNRdiBq-RB3HjGA8BZfvj5bb9YhtcnJ_H5gbg/edit#gid=187297085
