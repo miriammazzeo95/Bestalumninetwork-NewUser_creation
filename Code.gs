@@ -154,7 +154,7 @@ function addUser(firstNameParam, familyNameParam, personalEmailAddressParam, com
         "description": "Volunteer"
       }
     ],
-    "LBG": 'cph',
+    //"LBG": 'cph',
     "phones": [
       {
         "value": phoneNr,
