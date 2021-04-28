@@ -10,20 +10,6 @@ function installTrigger() {
 }
 
 
-//TEST WITH A NEW CLASS IN HTML FILE ascii-folder
-//var ASCIIFolder = require("./lib/ascii-folder");
-// Some Characters have no defined replacement.
-// Specify a fixed replacement character (defaults to the empty string).
-//ASCIIFolder.foldReplacing("Lörem 🤧 ëripuît") === "Lorem  eripuit";
-/*
-function loadJS() {
-  var  loadHTMLfile = HtmlService.createTemplateFromFile("ascii-folder.html").getRawContent();
-  eval(loadHTMLfile);
- }
-loadJS();
-console.log(ASCIIFolder);
-*/
-
 
 /**
  *   This form is for the BAN treasurer in order to input the payment done by a member into the database.
@@ -52,8 +38,8 @@ function unittest() {
       'Phone number': [ '010101' ],
       'First Name': [ 'Miriam' ],
       Email: [ 'nofunnycharacters.allowed@gmail.com' ],
-      Comments: [ '' ],
-      LBG: ['cph']
+      Comments: [ '' ]
+      //LBG: ['cph']
     }
   };
   onFormSubmit(test_obj_v1, true)
@@ -71,8 +57,9 @@ function onFormSubmit(e, unittest = false) {
   var email = responses['Email'][0].trim(); 
   var adress = responses['Address'][0];
   var phoneNr = responses['Phone number'][0].trim();
-  var lbg =  responses['LBG'][0].trim();
-  addUser(firstName,familyName,email,adress,phoneNr,lbg, unittest);
+  //var lbg =  responses['LBG'][0].trim();
+  //addUser(firstName,familyName,email,adress,phoneNr,lbg, unittest);
+  addUser(firstName,familyName,email,adress,phoneNr, unittest);
 }
 
 
@@ -91,8 +78,8 @@ function addUser(firstNameParam, familyNameParam, personalEmailAddressParam, com
 
 
 //START NEW PART - TRANSLITERATION AND DIACRITICS REMOVAL
-  var firstNameCleanedUp = ASCIIFolder.foldReplacing(firstName).replace(/[^a-z0-9]/g, '') // REMOVE INVALID CHARS;
-  var familyNameCleanedUp = ASCIIFolder.foldReplacing(familyName).replace(/[^a-z0-9]/g, '') // REMOVE INVALID CHARS;
+  var firstNameCleanedUp = ASCIIFolder.foldReplacing(firstName.toLowerCase()).replace(/[^a-z0-9]/g, '') // REMOVE INVALID CHARS;
+  var familyNameCleanedUp = ASCIIFolder.foldReplacing(familyName.toLowerCase()).replace(/[^a-z0-9]/g, '') // REMOVE INVALID CHARS;
   var rforeign = /[^\u0000-\u007f]/;
 
   if (!firstNameCleanedUp || firstNameCleanedUp==' '){
@@ -111,27 +98,25 @@ function addUser(firstNameParam, familyNameParam, personalEmailAddressParam, com
   }
 
 
-  var firstNameCleanedUp = firstNameCleanedUp.toLowerCase().replace(/[^a-z0-9]/g, '') // REMOVE INVALID CHARS;
-  var familyNameCleanedUp = familyNameCleanedUp.toLowerCase().replace(/[^a-z0-9]/g, ''); // REMOVE INVALID CHARS
+  var firstNameCleanedUp = firstNameCleanedUp.replace(/[^a-z0-9]/g, '') // REMOVE INVALID CHARS;
+  var familyNameCleanedUp = familyNameCleanedUp.replace(/[^a-z0-9]/g, ''); // REMOVE INVALID CHARS
 
   var banEmailAddress = firstNameCleanedUp +"."+familyNameCleanedUp +"@bestalumni.net";
 
 //END NEW PART
 
-
-
-  //TODO improve to get é -> e, ä -> ae etc so that the best alumni address doesn't simply truncate the name of the people
-  // TODO match to the real submit form
+  // TODO match to the real submit form (?)
   
   //var banEmailCleanedUp = banEmailAddress.replace(/[^a-zA-Z0-9_\-@.]/g,'');
   //var banEmailCleanedUp = banEmailAddress.replace(/[ş]/g,'s');
   var banEmailCleanedUp = banEmailAddress;
 
-  //this works!!
+  //this works for diacritics but not used in the end
   //var banEmailCleanedUp = removeDiacritics(banEmailAddress); 
 
   var personalEmailCleanedUp = personalEmailAddress;
   
+//TODO: add LBG information to user
   var user = {
     "primaryEmail": banEmailCleanedUp,
     "name": {
@@ -169,6 +154,7 @@ function addUser(firstNameParam, familyNameParam, personalEmailAddressParam, com
         "description": "Volunteer"
       }
     ],
+    "LBG": 'cph',
     "phones": [
       {
         "value": phoneNr,
