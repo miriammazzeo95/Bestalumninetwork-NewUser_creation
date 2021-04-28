@@ -11,9 +11,9 @@ When a new user/applicant completes the form, this JS will:
    1- check if this is the first application for this email address -> if not, step 2 is skipped
    
    2- insert the new user/applicant data in the database (Admin Directory), including 
-     a_ an automatically "calculated" best alumni address
-     b_ the group to be activated 
-     c_ a random password 
+     an automatically "calculated" best alumni address,
+     the group to be activated, 
+     a random password 
      
    3- inform admin of the process with a summary email
    
