@@ -3,8 +3,8 @@
 
 This script is embedded within a spreadsheet and connected triggered by filling a form. New users fill the form to apply for BAN membership.
 
-#SPREADSHEET: https://docs.google.com/spreadsheets/d/17ZC44sx7U25cpTi7IJZkBi1gebIXOtfG9g1NH57LyCE/edit#gid=636585522
-#FORM: https://docs.google.com/forms/d/e/1FAIpQLSfVU4jouxKIlBFLyRAJ4x2Ax8WG4GemXeB26fSvGjgz46gt5A/viewform
+#SPREADSHEET: 
+#FORM:
 
 When a new user/applicant completes the form, this JS will:
 
